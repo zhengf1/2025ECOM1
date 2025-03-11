@@ -3,7 +3,7 @@
 # by Zheng Fan; fan.z@unimelb.edu.au
 # Contact me if you have any questions.
 
-# please refer to Dave's R code for detailed explanations
+# please refer to Canvas R code for detailed explanations
 # it contains much more than the tutorial questions required
 
 rm(list=ls()) # remove everything in the environment to start a new project
