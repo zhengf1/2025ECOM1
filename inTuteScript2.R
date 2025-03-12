@@ -3,19 +3,15 @@
 # by Zheng Fan; fan.z@unimelb.edu.au
 # Contact me if you have any questions.
 
+# this R.script is(will be) available on
+# www.zhengfan.site  -> Teaching
+
 # please refer to Canvas R code for detailed explanations
 # it contains much more than the tutorial questions required
 
 rm(list=ls()) # remove everything in the environment to start a new project
 
-# set the working directory; yours will be different
-setwd( dirname(rstudioapi::getActiveDocumentContext()$path) )
-getwd()
-# or
-setwd("~/Dropbox/01 UoM-Teaching/2024-S2-Ecom1/Week2") # your path should be different 
-# or
-# manually navigate to the folder and set the working directory 
-setwd("~/Library/CloudStorage/Dropbox/01 UoM-Teaching/2024-S2-Ecom1/Week2")
+setwd("/Users/zhengfan/Library/CloudStorage/Dropbox/01 UoM-Teaching/2025-S1-Ecom1/Week2")
 
 # load the data
 dt = read.csv("tute2_crime.csv")
@@ -86,7 +82,7 @@ plot(dt$vio, dt$rob,
      ylab = "Robbery",
      main = "scatter plot b/w VIO/ROB",
      col = "red",
-     pch = 18)
+     pch = 21)
 # you can manually save; 
 # or save with code (see Dave's code)
 
@@ -99,10 +95,9 @@ boxplot(dt$vio)
 # 25th and 75th percentiles (intermediate low and high values of a distribution)
 # Min and Max value         (extreme low and high values of a distribution)
 
-
 ############### Notes ############### 
 # this R.script will be uploaded to
-# https://github.com/zhengf1/2025ECOM1
+# www.zhengfan.site  -> Teaching
 
 # please refer to Canvas R code for detailed explanations
 # it may contains much more than the tutorial questions required
