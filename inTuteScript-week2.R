@@ -1,10 +1,11 @@
 ##---------------------------------------------------------------------------------
-############### ECOM20001 Econometrics 1 Week 2 Tutorial 1
+############### ECOM20001 Econometrics 1 Week 2 Tutorial 2
 # by Zheng Fan; fan.z@unimelb.edu.au
 # Contact me if you have any questions.
 
 # this R.script is(will be) available on
 # www.zhengfan.site  -> Teaching
+# or my github: https://github.com/zhengf1/2025ECOM1
 
 # please refer to Canvas R code for detailed explanations
 # it contains much more than the tutorial questions required
@@ -12,6 +13,7 @@
 rm(list=ls()) # remove everything in the environment to start a new project
 
 setwd("/Users/zhengfan/Library/CloudStorage/Dropbox/01 UoM-Teaching/2025-S1-Ecom1/Week2")
+getwd()
 
 # load the data
 dt = read.csv("tute2_crime.csv")
@@ -20,6 +22,8 @@ dt = read.csv("tute2_crime.csv")
 sapply(dt, class)
 
 # as.numeric() if your data type is not numeric or integer
+"1"+"2"
+as.numeric("1") + as.numeric("2")
 
 # -------------------------- Q.1
 # summary statistics
@@ -35,6 +39,8 @@ sapply(dt, median)
 quantile(dt$vio)
 # quantile() can also be used to return specifc percentiles of a distribution
 quantile(dt$avginc, c(0.32, 0.57, 0.98, 0.1))
+quantile(dt$avginc, 0.32)
+quantile(dt$avginc, 0.57)
 
 summary(dt)
 
@@ -60,8 +66,12 @@ plot(density(dt$dens))
 plot(density(dt$rob))
 plot(density(dt$avginc), main = "density plot")
 
-pdf("test.pdf")
+pdf("54321.pdf")
 plot(density(dt$dens))
+dev.off()
+
+pdf("54321-avinc.pdf")
+plot(density(dt$avginc))
 dev.off()
 
 
@@ -82,7 +92,7 @@ plot(dt$vio, dt$rob,
      ylab = "Robbery",
      main = "scatter plot b/w VIO/ROB",
      col = "red",
-     pch = 21)
+     pch = 22)
 # you can manually save; 
 # or save with code (see Dave's code)
 
@@ -96,8 +106,9 @@ boxplot(dt$vio)
 # Min and Max value         (extreme low and high values of a distribution)
 
 ############### Notes ############### 
-# this R.script will be uploaded to
+# this R.script is(will be) available on
 # www.zhengfan.site  -> Teaching
+# or my github: https://github.com/zhengf1/2025ECOM1
 
 # please refer to Canvas R code for detailed explanations
 # it may contains much more than the tutorial questions required
