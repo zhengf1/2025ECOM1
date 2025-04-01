@@ -15,6 +15,8 @@
 #***************************************************************************** 
 #****** Keep in mind you will have group registration DUE this FRIDAY 5pm
 #****** Group assignment is due next Friday 11 April 8am
+#****** You have all the required knowledge to complete them
+#****** You should start it ASAP !!!
 #***************************************************************************** 
 #*****************************************************************************
 
