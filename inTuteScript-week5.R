@@ -1,7 +1,8 @@
-##---------------------------------------------------------------------------------
+#***************************************************************************** 
 ############### ECOM20001 Econometrics 1 Week 5
 # by Zheng Fan; fan.z@unimelb.edu.au
 # Contact me if you have any questions.
+#***************************************************************************** 
 
 # this R.script is(will be) available on
 # www.zhengfan.site  -> Teaching section
@@ -14,7 +15,7 @@
 #***************************************************************************** 
 #***************************************************************************** 
 #****** Keep in mind you will have group registration DUE this FRIDAY 5pm
-#****** Group assignment is due next Friday 11 April 8am
+#****** Group assignment is due next Friday 11 April 5pm
 #****** You have all the required knowledge to complete them
 #****** You should start it ASAP !!!
 #***************************************************************************** 
