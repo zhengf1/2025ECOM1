@@ -37,13 +37,10 @@ getwd()
 # --------- Load Stargazer package for summary statistics and regression tables
 library(stargazer)
 
-
 #**********************************************************************************************
 # Earnings and Height
-
 #**********************************************************************************************
 # ------------------------- Q1 ------------------------- 
-
 ## Load dataset on income and height
 mydata1 = read.csv("tute5_height.csv")
 
@@ -78,23 +75,29 @@ CI95_upp = beta_hat[2] + 1.96*se[2]    # upper bound of 95% CI
 
 #**********************************************************************************************
 # ------------------------- Q2 ------------------------- 
-# var(100X) = 100^2 var(X)
-# se(100x) = sqrt( 100^2 var(X)) = 100 se(x)
+# beta_hat +- critial_value * se(beta_hat)
+# beta_hat*100 +- critial_value * se(beta_hat*100)
+
+# var(100 beta_hat) = 100^2 var(beta_hat)
+# se(100 beta_hat) = sqrt( 100^2 var(beta_hat)) = 100 se(beta_hat)
+
+# beta_hat*100 +- critial_value * 100 se(beta_hat)
+# 100* (beta_hat +- critial_value * se(beta_hat))
 
 ## 95% CI for increasing height by 100cm on earnings
-CI95_low_100 = 100 * (beta_hat[2]-1.96*se[2])    # lower bound of 95% CI
-CI95_upp_100 = 100 * (beta_hat[2]+1.96*se[2])    # upper bound of 95% CI
+CI95_low_100 = 100 * (beta_hat[2] - 1.96*se[2])    # lower bound of 95% CI
+CI95_upp_100 = 100 * (beta_hat[2] + 1.96*se[2])    # upper bound of 95% CI
 paste("95% CI lower bound for 100cm increase in earnings is: ", CI95_low_100)
 paste("95% CI upper bound for 100cm increase in earnings is: ", CI95_upp_100)
 
 #**********************************************************************************************
 # ------------------------- Q3 ------------------------- 
-# 10cm -> 3000 income increase (measured in 10,000)
-# 10cm -> 0.3 income increase (in the data)
-# 1 cm -> 0.03 income increase
+# H0: 10cm -> 3000 income increase (measured in 10,000)
+# H0: 10cm -> 0.3 income increase (in the data)
+# H0: 1 cm -> 0.03 income increase
 
 ## t-statistic and p-value for null that slope = 0.03
-# H0: beta2 = 0.03 H1: beta2 not= 0.03
+# H0: beta1 = 0.03 H1: beta1 not= 0.03
 # both t-stat and p-value from the regress table are not valid
 
 (tstat2 = (beta_hat[2]-0.03)/se[2])
@@ -150,7 +153,7 @@ plot(mydata2$police[-25],mydata2$homicides[-25])
  
 #**********************************************************************************************
 # ------------------------- Q3 ------------------------- 
- crime_reg1=lm(homicides~police, data=mydata2)
+crime_reg1 = lm(homicides~police, data=mydata2)
 summary(crime_reg1)
 confint(crime_reg1, 'police', level=0.95)
 
@@ -179,7 +182,7 @@ confint(crime_reg2, 'police_1000', level=0.95)
 # re-scaled police numbers throughout
 
 ## Regression results without potential outlier
-crime_reg3=lm(homicides[homicides<100]~police_1000[homicides<100], data=mydata2)
+crime_reg3=lm(homicides[-25]~police_1000[-25], data=mydata2)
 summary(crime_reg3)
 confint(crime_reg3, 'police_1000[homicides < 100]', level=0.95)
 
@@ -194,7 +197,7 @@ confint(crime_reg3, 'police_1000[homicides < 100]', level=0.95)
 abline(crime_reg2, col="blue", lwd=2)
 abline(crime_reg3, col="red", lwd=2)
 legend("bottomright", c("regression 2 (include outlier)","regression 3 (omit outlier)"), col = c("blue","red"),pch=16)
- 
+
 ############### Notes ############### 
 # this R.script is(will be) available on
 # www.zhengfan.site  -> Teaching
