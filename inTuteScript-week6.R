@@ -52,16 +52,16 @@ library(AER)
 #**********************************************************************************************
 # ------------------ Q0 ------------------
 ## Load dataset on income and height
-mydata1 = read.csv("tute6_smoke.csv")
+donotsmoke = read.csv("tute6_smoke.csv")
 
-## List the variables in the dataset named mydata1
-names(mydata1)
+## List the variables in the dataset named donotsmoke
+names(donotsmoke)
 
 ## Dimension of the dataset
 # 3000 observations (babies and their mothers)
 # 13 variables: id, birthweight, smoker, alcohol, drinks, nprevisit, tripre1, tripre2, tripre3,
 #               tripre0, unmarried, educ, age            
-dim(mydata1)
+dim(donotsmoke)
 
 
 #**********************************************************************************************
@@ -70,7 +70,7 @@ dim(mydata1)
 
 # Compute summary statistics to get a sense of a typical (baby,mother) pair in the data
 ## Summary Statistics
-stargazer(mydata1, 
+stargazer(donotsmoke, 
           summary.stat = c("n", "mean", "sd", "median", "min", "max"),  
           type="text", title="Descriptive Statistics",
           out="sumstats1.txt")
@@ -80,17 +80,17 @@ stargazer(mydata1,
 # density plot and Hypothesis testing
 
 # Birthweight probability densities among smokers and non-smokers
-plot(density(mydata1$birthweight[mydata1$smoker==1]), 
+plot(density(donotsmoke$birthweight[donotsmoke$smoker==1]), 
      col="red",lty=1,main="Birthweight Among Smoking and Non-Smoking Mothers", xlab="Birthweight")
-lines(density(mydata1$birthweight[mydata1$smoker==0]), col="blue",lty=2)
+lines(density(donotsmoke$birthweight[donotsmoke$smoker==0]), col="blue",lty=2)
 legend("topright", legend=c("Smoker", "Non-Smoker"), 
        col=c("red","blue"), lty=c(1,2))
 
 # T-test of difference in birthweight for smokers and non-smokers
-mean(mydata1$birthweight[mydata1$smoker==1])
-mean(mydata1$birthweight[mydata1$smoker==0])
-mean(mydata1$birthweight[mydata1$smoker==1])-mean(mydata1$birthweight[mydata1$smoker==0])
-t.test(mydata1$birthweight[mydata1$smoker==1],mydata1$birthweight[mydata1$smoker==0])
+mean(donotsmoke$birthweight[donotsmoke$smoker==1])
+mean(donotsmoke$birthweight[donotsmoke$smoker==0])
+mean(donotsmoke$birthweight[donotsmoke$smoker==1])-mean(donotsmoke$birthweight[donotsmoke$smoker==0])
+t.test(donotsmoke$birthweight[donotsmoke$smoker==1],donotsmoke$birthweight[donotsmoke$smoker==0])
 
 #**********************************************************************************************
 # ------------------ Q3 ------------------
@@ -99,39 +99,39 @@ t.test(mydata1$birthweight[mydata1$smoker==1],mydata1$birthweight[mydata1$smoker
 # 1. Birth weight, smoking, alcohol
 
 # Birth weight densities, drinkers and non-drinkers
-plot(density(mydata1$birthweight[mydata1$alcohol==1]), 
+plot(density(donotsmoke$birthweight[donotsmoke$alcohol==1]), 
      col="red",lty=1,main="Birthweight Among Drinking and Non-Drinking Mothers", xlab="Birthweight")
-lines(density(mydata1$birthweight[mydata1$alcohol==0]), col="blue",lty=2)
+lines(density(donotsmoke$birthweight[donotsmoke$alcohol==0]), col="blue",lty=2)
 legend("topright", legend=c("Drinker", "Non-Drinker"), 
        col=c("red","blue"), lty=c(1,2))
 
 # T-test of difference in drinking for smokers and non-smokers
-mean(mydata1$alcohol[mydata1$smoker==1])
-mean(mydata1$alcohol[mydata1$smoker==0])
-mean(mydata1$alcohol[mydata1$smoker==1])-mean(mydata1$alcohol[mydata1$smoker==0])
-t.test(mydata1$alcohol[mydata1$smoker==1],mydata1$alcohol[mydata1$smoker==0])
+mean(donotsmoke$alcohol[donotsmoke$smoker==1])
+mean(donotsmoke$alcohol[donotsmoke$smoker==0])
+mean(donotsmoke$alcohol[donotsmoke$smoker==1])-mean(donotsmoke$alcohol[donotsmoke$smoker==0])
+t.test(donotsmoke$alcohol[donotsmoke$smoker==1],donotsmoke$alcohol[donotsmoke$smoker==0])
 
 # 2. Birth weight, smoking, prenatal care
 
 # Birth weight densities, with and without pre-natal care
-plot(density(mydata1$birthweight[mydata1$tripre0==0]), 
+plot(density(donotsmoke$birthweight[donotsmoke$tripre0==0]), 
      col="red",lty=1,main="Birthweight Among Babies With and Without Prenatal Care", xlab="Birthweight")
-lines(density(mydata1$birthweight[mydata1$tripre0==1]), col="blue",lty=2)
+lines(density(donotsmoke$birthweight[donotsmoke$tripre0==1]), col="blue",lty=2)
 legend("topright", legend=c("Pre-Natal Care", "No Pre-Natal Care"), 
        col=c("red","blue"), lty=c(1,2))
 
 # T-test of difference in prenatal care for smokers and non-smokers
-mean(mydata1$tripre0[mydata1$smoker==1])
-mean(mydata1$tripre0[mydata1$smoker==0])
-mean(mydata1$tripre0[mydata1$smoker==1])-mean(mydata1$tripre0[mydata1$smoker==0])
-t.test(mydata1$tripre0[mydata1$smoker==1],mydata1$tripre0[mydata1$smoker==0])
+mean(donotsmoke$tripre0[donotsmoke$smoker==1])
+mean(donotsmoke$tripre0[donotsmoke$smoker==0])
+mean(donotsmoke$tripre0[donotsmoke$smoker==1])-mean(donotsmoke$tripre0[donotsmoke$smoker==0])
+t.test(donotsmoke$tripre0[donotsmoke$smoker==1],donotsmoke$tripre0[donotsmoke$smoker==0])
 
 
 # 3. Birth weight, smoking, education
 
 # Scatterplot between birth weight and education with line of best fit
-birthweight_educ_reg=lm(birthweight~educ,data=mydata1)
-plot(mydata1$educ,mydata1$birthweight,
+birthweight_educ_reg=lm(birthweight~educ,data=donotsmoke)
+plot(donotsmoke$educ,donotsmoke$birthweight,
      main="Birth Weight and Years of Education",
      xlab="Years of Education",
      ylab="Birth Weight",
@@ -140,10 +140,10 @@ plot(mydata1$educ,mydata1$birthweight,
 abline(birthweight_educ_reg, col="red", lwd=2)
 
 # T-test of difference in education for smokers and non-smokers
-mean(mydata1$educ[mydata1$smoker==1])
-mean(mydata1$educ[mydata1$smoker==0])
-mean(mydata1$educ[mydata1$smoker==1])-mean(mydata1$educ[mydata1$smoker==0])
-t.test(mydata1$educ[mydata1$smoker==1],mydata1$educ[mydata1$smoker==0])
+mean(donotsmoke$educ[donotsmoke$smoker==1])
+mean(donotsmoke$educ[donotsmoke$smoker==0])
+mean(donotsmoke$educ[donotsmoke$smoker==1])-mean(donotsmoke$educ[donotsmoke$smoker==0])
+t.test(donotsmoke$educ[donotsmoke$smoker==1],donotsmoke$educ[donotsmoke$smoker==0])
 
 # --------- Omitted variable bias:
 # Does missing alcohol/Pre-Natal Care/education matter?
@@ -181,7 +181,7 @@ t.test(mydata1$educ[mydata1$smoker==1],mydata1$educ[mydata1$smoker==0])
 # summary(reg)              
 
 # Single linear regression results relating birthweight and smoking, assuming homoskedasticity
-reg1=lm(birthweight~smoker, data=mydata1)
+reg1=lm(birthweight~smoker, data=donotsmoke)
 summary(reg1)
 
 # Single linear regression results relating birthweight and smoking, allowing for heteroskedasticity
@@ -206,28 +206,28 @@ summary(reg1)$adj.r.squared   # report the adjusted R-Squared from the regressio
 # vcovHC() + sqrt() commands to get the heteroskedasticity robust standard errors
 
 # Single linear regression with no other controls
-reg1=lm(birthweight~smoker,data=mydata1)  # save regression results for reg1
+reg1=lm(birthweight~smoker,data=donotsmoke)  # save regression results for reg1
 cov1=vcovHC(reg1, type = "HC1")           # next 2 lines save the robust standard errors for reg1
 se1=sqrt(diag(cov1))
 
 # Controlling for alcohol
-reg2=lm(birthweight~smoker+alcohol+drinks,data=mydata1) # save regression results for reg2
+reg2=lm(birthweight~smoker+alcohol+drinks,data=donotsmoke) # save regression results for reg2
 cov2=vcovHC(reg2, type = "HC1")                         # next 2 lines save the robust standard errors for reg2
 se2=sqrt(diag(cov2))                    
 
 # Controlling for alcohol, prenatal care
-reg3=lm(birthweight~smoker+alcohol+drinks+nprevisit+tripre1+tripre2+tripre3,data=mydata1) # save regression results for reg3
+reg3=lm(birthweight~smoker+alcohol+drinks+nprevisit+tripre1+tripre2+tripre3,data=donotsmoke) # save regression results for reg3
 cov3=vcovHC(reg3, type = "HC1")                         # next 2 lines save the robust standard errors for reg3
 se3=sqrt(diag(cov3))  
 
 # Controlling for alcohol, prenatal care, demographics
-reg4=lm(birthweight~smoker+alcohol+drinks+nprevisit+tripre1+tripre2+tripre3+age+educ+unmarried,data=mydata1) # save regression results for reg4
+reg4=lm(birthweight~smoker+alcohol+drinks+nprevisit+tripre1+tripre2+tripre3+age+educ+unmarried,data=donotsmoke) # save regression results for reg4
 cov4=vcovHC(reg4, type = "HC1")                         # next 2 lines save the robust standard errors for reg4
 se4=sqrt(diag(cov4))  
 
 # Controlling for alcohol, prenatal care, demographics
 # Assuming homoskedastic standard errors for comparison to reg4
-reg5=lm(birthweight~smoker+alcohol+drinks+nprevisit+tripre1+tripre2+tripre3+age+educ+unmarried,data=mydata1) # save regression results for reg5
+reg5=lm(birthweight~smoker+alcohol+drinks+nprevisit+tripre1+tripre2+tripre3+age+educ+unmarried,data=donotsmoke) # save regression results for reg5
 cov5=vcovHC(reg5, type = "const")                         # next 2 lines save the standard errors for reg5
 se5=sqrt(diag(cov5))  
 
