@@ -54,8 +54,7 @@ donotsmoke=read.csv("tute7_smoke.csv")
 
 ## Create a new regressor that is the sum of tripre0, tripre1, tripre2, triepre2
 ## This is also known as the "Constant Regressor" denoted X0 from Lecture Note 6
-donotsmoke$constant = donotsmoke$tripre0 + donotsmoke$tripre1 
-                      +donotsmoke$tripre2 + donotsmoke$tripre3
+donotsmoke$constant = donotsmoke$tripre0 + donotsmoke$tripre1 +donotsmoke$tripre2 + donotsmoke$tripre3
 
 ## Summarize the constant variable - it's always 1!
 summary(donotsmoke$constant)
