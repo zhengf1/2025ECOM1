@@ -1,0 +1,43 @@
+Regression(1): log-linear
+
+d(ahe)/d(age) !?
+d(log(ahe))/d(age) = 0.031- 0.012 * female 
+male: 0.031 -> 1 unit increase in age -> 0.031 unit increase in log(AHE)
+	       1 unit increase in age -> 3.1% increase in AHE
+female: 0.031- 0.012 = 0.019 -> 
+               1 unit increase in age -> 1.9% increase in AHE
+
+d(ahe)/d(female) !?
+d(log(ahe))/d(female) = 0.175 - 0.012 * age
+age = 25: 0.175 - 0.012*25 = -0.125 -> 12.5% decrease in AHE
+age = 30: 0.175 - 0.012*30 = -0.245 -> 24.5% decrease in AHE
+
+Regression(2): log - log
+
+d(ahe)/d(age) !?
+d(log(ahe))/d(log(age)) = 0.924 -0.341 x Female 
+
+male: 0.924: 1% increase in age -> 0.924% increase in AHE
+
+female: 0.924 -0.341 = 0.583:
+	     1% increase in age -> 0.583% increase in AHE
+
+Q3:
+log(ahe) = beta1 * log(age) + beta2 *log(age)* female +...
+
+d(log(ahe))/d(log(age)) = beta1 + beta2  * female
+	      delta (Y) = beta1 + beta2
+
+se(elasticity/partial effect) = se(beta1 + beta2)
+
+H0: Beta1 + Beta2 = 0
+ T-staitstics = (beta1+beta2 - (Beta1 + Beta2)) / se(beta1 + beta2) 
+              = (beta1+beta2) / se(beta1 + beta2) 
+
+se(beta1 + beta2) = (beta1+beta2) / t-statistics
+	          = |beta1+beta2| / sqrt(F-statistics)
+
+
+
+
+
